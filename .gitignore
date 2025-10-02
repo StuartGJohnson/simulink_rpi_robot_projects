@@ -1,0 +1,8 @@
+slprj/
+codegen/
+*_ert_rtw/
+*.slxc
+*.mex*
+*.asv
+*.autosave
+

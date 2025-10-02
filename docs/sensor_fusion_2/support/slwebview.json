@@ -1,0 +1,29 @@
+{
+ "version":3,
+ "baseUrl":"support/slwebview_files",
+ "homeHid":1,
+ "sections":[
+  {
+   "hid":1,
+   "sid":"sensor_fusion_2",
+   "name":"sensor_fusion_2",
+   "fullname":"sensor_fusion_2",
+   "label":"sensor_fusion_2",
+   "parent":0,
+   "descendantIDs":[
+    2,
+    3
+   ],
+   "descendantsURL":"support/slwebview_files/sensor_fusion_2_diagrams_1.json",
+   "sysViewURL":"support/slwebview_files/sensor_fusion_2_p.json"
+  }
+ ],
+ "optViews":[
+ ],
+ "display":{
+  "informer":false,
+  "notes":false
+ },
+ "iconsUrl":"support/slwebview_files/icon.css",
+ "lod":true
+}

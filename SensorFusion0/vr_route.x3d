@@ -1,0 +1,577 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
+<X3D profile='Immersive' version='3.3' xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.3.xsd'>
+<head>
+</head>
+<Scene>
+<ProtoDeclare name='Obstacle'>
+<ProtoInterface>
+<field name='myTranslation' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+</ProtoInterface>
+<ProtoBody>
+  <Transform>
+  <IS>
+  <connect protoField='myTranslation' nodeField='translation' />
+  </IS>
+    <Shape>
+      <Appearance>
+        <ImageTexture url='"*sl3dlib/objects/Textures/General/Raindrop.png" '>
+        </ImageTexture>
+        <Material specularColor='0.07 0.07 0.2' shininess='0.01' emissiveColor='0.03 0.03 0.04' diffuseColor='0.5 0.5 0.5' ambientIntensity='0.0867'>
+        </Material>
+      </Appearance>
+      <Box size='0.5 0.2 0.5'>
+      </Box>
+    </Shape>
+  </Transform>
+</ProtoBody></ProtoDeclare>
+<ProtoDeclare name='RobotPillar'>
+<ProtoInterface>
+<field name='RPTrans' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+</ProtoInterface>
+<ProtoBody>
+  <Transform>
+  <IS>
+  <connect protoField='RPTrans' nodeField='translation' />
+  </IS>
+    <Shape>
+      <Appearance>
+        <Material diffuseColor='0.3 0.3 0.3'>
+        </Material>
+      </Appearance>
+      <Cylinder radius='0.005' height='0.06'>
+      </Cylinder>
+    </Shape>
+  </Transform>
+</ProtoBody></ProtoDeclare>
+<ProtoDeclare name='RobotWheel'>
+<ProtoInterface>
+<field name='RW1Trans' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+<field name='RW2Trans' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+<field name='RW3Trans' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+</ProtoInterface>
+<ProtoBody>
+  <Transform rotation='1 0 0 1.5708'>
+  <IS>
+  <connect protoField='RW1Trans' nodeField='translation' />
+  </IS>
+    <Shape>
+      <Appearance>
+        <Material diffuseColor='0.5 0.5 0.5'>
+        </Material>
+      </Appearance>
+      <Cylinder radius='0.038' height='0.03'>
+      </Cylinder>
+    </Shape>
+    <Transform>
+    <IS>
+    <connect protoField='RW2Trans' nodeField='translation' />
+    </IS>
+      <Shape>
+        <Appearance>
+          <Material>
+          </Material>
+        </Appearance>
+        <Cylinder radius='0.005' height='0.03'>
+        </Cylinder>
+      </Shape>
+    </Transform>
+    <Transform>
+    <IS>
+    <connect protoField='RW3Trans' nodeField='translation' />
+    </IS>
+      <Shape>
+        <Appearance>
+          <Material diffuseColor='0.2 0.2 0.2'>
+          </Material>
+        </Appearance>
+        <Box size='0.04 0.02 0.02'>
+        </Box>
+      </Shape>
+    </Transform>
+  </Transform>
+</ProtoBody></ProtoDeclare>
+<ProtoDeclare name='RobotSupportWheel'>
+<ProtoInterface>
+<field name='RSWTrans' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+</ProtoInterface>
+<ProtoBody>
+  <Transform>
+  <IS>
+  <connect protoField='RSWTrans' nodeField='translation' />
+  </IS>
+    <Shape>
+      <Appearance>
+        <Material diffuseColor='0.5 0.5 0.5'>
+        </Material>
+      </Appearance>
+      <Cylinder radius='0.009' height='0.015'>
+      </Cylinder>
+    </Shape>
+    <Transform translation='0 -0.005 0'>
+      <Shape>
+        <Appearance>
+          <Material diffuseColor='0.9 0.9 0.9'>
+          </Material>
+        </Appearance>
+        <Sphere radius='0.009'>
+        </Sphere>
+      </Shape>
+    </Transform>
+  </Transform>
+</ProtoBody></ProtoDeclare>
+<ProtoDeclare name='Spot'>
+<ProtoInterface>
+<field name='myTranslation' type='SFVec3f' accessType='inputOutput' value='0 0 0'/>
+</ProtoInterface>
+<ProtoBody>
+  <Transform>
+  <IS>
+  <connect protoField='myTranslation' nodeField='translation' />
+  </IS>
+    <Shape>
+      <Appearance>
+        <Material specularColor='1 0 0' shininess='0.01' emissiveColor='1 0 0' diffuseColor='1 0 0' ambientIntensity='0.0867'>
+        </Material>
+      </Appearance>
+      <Cylinder radius='0.025' height='0.005'>
+      </Cylinder>
+    </Shape>
+  </Transform>
+</ProtoBody></ProtoDeclare>
+<WorldInfo title='Differential Wheeled Robot in a Maze' info='"Copyright 1998-2017 HUMUSOFT s.r.o. and The MathWorks, Inc." '>
+</WorldInfo>
+<Background groundAngle='0.9 1.5 1.57' groundColor='0 0.8 0 0.174249 0.82 0.187362 0.467223 0.82 0.445801 0.621997 0.67 0.600279' skyAngle='0.1 1.2 1.57' skyColor='0.76238 0.8 0.1427 0.277798 0.219779 0.7 0.222549 0.390234 0.7 0.60094 0.662637 0.69'>
+</Background>
+<DirectionalLight direction='-1 -1 -1' ambientIntensity='0.5' intensity='0.6'>
+</DirectionalLight>
+<DirectionalLight direction='1 -1 1' ambientIntensity='0.5' intensity='0.6'>
+</DirectionalLight>
+<Viewpoint DEF='VP_Overview'  fieldOfView='0.7854' description='Overview' orientation='1 0 0 -0.95' position='2 3.8 3.8'>
+</Viewpoint>
+<Viewpoint DEF='VP_Top'  fieldOfView='0.7854' description='View from the Top' orientation='1 0 0 -1.5708' position='2 6 0.7'>
+</Viewpoint>
+<Transform DEF='Static_Objects' >
+  <Shape DEF='Ground' >
+    <Appearance>
+      <TextureTransform scale='50 50'>
+      </TextureTransform>
+      <ImageTexture url='"texture/gravel.jpg" '>
+      </ImageTexture>
+    </Appearance>
+    <IndexedFaceSet coordIndex='3 2 1 0 -1' colorPerVertex='false'>
+      <Coordinate point='-105 -0.1 -105 125 -0.1 -105 125 -0.1 125 -105 -0.1 125'>
+      </Coordinate>
+    </IndexedFaceSet>
+  </Shape>
+  <Shape DEF='Floor' >
+    <Appearance>
+      <TextureTransform scale='20 20'>
+      </TextureTransform>
+      <ImageTexture url='"*sl3dlib/objects/Textures/General/Granite.jpg" '>
+      </ImageTexture>
+      <Material DEF='Area_Mat'  shininess='0' diffuseColor='0.37 0.5 0.33' ambientIntensity='0.5'>
+      </Material>
+    </Appearance>
+    <IndexedFaceSet coordIndex='3 2 1 0 -1'>
+      <Coordinate point='-0.2 0 -1.2 4.2 0 -1.2 4.2 0 2.6 -0.2 0 2.6'>
+      </Coordinate>
+    </IndexedFaceSet>
+  </Shape>
+</Transform>
+<Transform DEF='Robot' >
+  <Transform translation='0 0.038 0'>
+    <Transform translation='0.1 0.1 0' rotation='0 1 0 -1.5708'>
+      <Viewpoint DEF='VP_Follow'  fieldOfView='1.5708' description='Follow Robot' orientation='1 0 0 -0.1' position='0 0 0'>
+      </Viewpoint>
+    </Transform>
+    <Transform DEF='sensor_base'  translation='-0.0075 0.08 0'>
+      <Transform>
+        <Shape>
+          <Appearance>
+            <Material specularColor='0.5 0.5 0.5' shininess='0.12' emissiveColor='0 0.06 0.1' diffuseColor='0.33 0.33 0.33' ambientIntensity='0.04'>
+            </Material>
+          </Appearance>
+          <Cylinder radius='0.028' height='0.06'>
+          </Cylinder>
+        </Shape>
+      </Transform>
+      <Transform translation='0 0.005 0'>
+        <Shape>
+          <Appearance>
+            <Material specularColor='0.5 0.5 0.5' shininess='0.3' emissiveColor='0 0.06 0.1' diffuseColor='0.1 0.1 0.1' ambientIntensity='0.04'>
+            </Material>
+          </Appearance>
+          <Cylinder radius='0.03' height='0.03'>
+          </Cylinder>
+        </Shape>
+      </Transform>
+      <LinePickSensor DEF='Sensor1'  intersectionType='GEOMETRY' sortOrder='CLOSEST' enabled='false'>
+        <IndexedLineSet DEF='Lineset1'  containerField='pickingGeometry' coordIndex='0 1' colorPerVertex='false'>
+          <Coordinate point='0 0.005 0 0.3 0.005 0'>
+          </Coordinate>
+          <Color DEF='LS1C'  color='0 1 0 0 1 0'>
+          </Color>
+        </IndexedLineSet>
+        <Group DEF='Walls_Obstacles'  containerField='pickTarget'>
+          <ProtoInstance DEF='Block1' name='Obstacle'>
+          <fieldValue name='myTranslation' value='0.5 0.1 -0.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block2' name='Obstacle'>
+          <fieldValue name='myTranslation' value='0.5 0.1 0.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block3' name='Obstacle'>
+          <fieldValue name='myTranslation' value='0.5 0.1 1'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block4' name='Obstacle'>
+          <fieldValue name='myTranslation' value='0.5 0.1 2'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block5' name='Obstacle'>
+          <fieldValue name='myTranslation' value='1 0.1 0.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block6' name='Obstacle'>
+          <fieldValue name='myTranslation' value='1.5 0.1 0'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block7' name='Obstacle'>
+          <fieldValue name='myTranslation' value='1.5 0.1 1.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block8' name='Obstacle'>
+          <fieldValue name='myTranslation' value='2 0.1 0'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block9' name='Obstacle'>
+          <fieldValue name='myTranslation' value='2 0.1 0.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block10' name='Obstacle'>
+          <fieldValue name='myTranslation' value='2 0.1 1.5'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block11' name='Obstacle'>
+          <fieldValue name='myTranslation' value='2.5 0.1 1'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block12' name='Obstacle'>
+          <fieldValue name='myTranslation' value='3 0.1 0'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block13' name='Obstacle'>
+          <fieldValue name='myTranslation' value='3 0.1 2'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block14' name='Obstacle'>
+          <fieldValue name='myTranslation' value='3.5 0.1 0'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block15' name='Obstacle'>
+          <fieldValue name='myTranslation' value='3.5 0.1 1'/>
+          </ProtoInstance>
+          <ProtoInstance DEF='Block16' name='Obstacle'>
+          <fieldValue name='myTranslation' value='3.5 0.1 2'/>
+          </ProtoInstance>
+          <Transform DEF='Walls' >
+            <Transform translation='2 0.2 -0.8'>
+              <Shape DEF='Wall1' >
+                <Appearance>
+                  <TextureTransform scale='6 2'>
+                  </TextureTransform>
+                  <ImageTexture url='"*sl3dlib/objects/Textures/General/Brick_Stone.png" '>
+                  </ImageTexture>
+                  <Material diffuseColor='0.25 0.25 0.25'>
+                  </Material>
+                </Appearance>
+                <Box size='3.5 0.4 0.1'>
+                </Box>
+              </Shape>
+            </Transform>
+            <Transform translation='2 0.2 2.3'>
+              <Shape DEF='Wall2' >
+                <Appearance>
+                  <TextureTransform scale='6 2'>
+                  </TextureTransform>
+                  <ImageTexture url='"*sl3dlib/objects/Textures/General/Brick_Stone.png" '>
+                  </ImageTexture>
+                  <Material diffuseColor='0.25 0.25 0.25'>
+                  </Material>
+                </Appearance>
+                <Box size='3.5 0.4 0.1'>
+                </Box>
+              </Shape>
+            </Transform>
+            <Transform>
+              <Transform translation='3.8 0.2 0.75' rotation='0 1 0 -1.5708'>
+                <Shape DEF='Wall3' >
+                  <Appearance>
+                    <TextureTransform scale='6 2'>
+                    </TextureTransform>
+                    <ImageTexture url='"*sl3dlib/objects/Textures/General/Brick_Stone.png" '>
+                    </ImageTexture>
+                    <Material diffuseColor='0.25 0.25 0.25'>
+                    </Material>
+                  </Appearance>
+                  <Box size='3.2 0.4 0.1'>
+                  </Box>
+                </Shape>
+              </Transform>
+            </Transform>
+          </Transform>
+        </Group>
+      </LinePickSensor>
+      <LinePickSensor DEF='Sensor2'  intersectionType='GEOMETRY' sortOrder='CLOSEST' enabled='false'>
+        <IndexedLineSet DEF='Lineset2'  containerField='pickingGeometry' coordIndex='0 1' colorPerVertex='false'>
+          <Coordinate point='0 0.005 0 0 0.005 -0.3'>
+          </Coordinate>
+          <Color DEF='LS2C'  color='0 1 0 0 1 0'>
+          </Color>
+        </IndexedLineSet>
+        <Group USE='Walls_Obstacles'  containerField='pickTarget'>
+        </Group>
+      </LinePickSensor>
+    </Transform>
+    <Transform DEF='top_part'  translation='0 0.05 0'>
+      <Shape>
+        <Appearance>
+          <Material diffuseColor='0.4 0.4 1'>
+          </Material>
+        </Appearance>
+        <Cylinder radius='0.13' height='0.01'>
+        </Cylinder>
+      </Shape>
+    </Transform>
+    <ProtoInstance DEF='RP1' name='RobotPillar'>
+    <fieldValue name='RPTrans' value='0.07 0.02 0.07'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='RP2' name='RobotPillar'>
+    <fieldValue name='RPTrans' value='0.07 0.02 -0.07'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='RP3' name='RobotPillar'>
+    <fieldValue name='RPTrans' value='-0.07 0.02 0.07'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='RP4' name='RobotPillar'>
+    <fieldValue name='RPTrans' value='-0.07 0.02 -0.07'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='W1' name='RobotWheel'>
+    <fieldValue name='RW1Trans' value='0 0 0.1175'/>
+    <fieldValue name='RW2Trans' value='0 -0.015 0'/>
+    <fieldValue name='RW3Trans' value='0 -0.03 0'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='W2' name='RobotWheel'>
+    <fieldValue name='RW1Trans' value='0 0 -0.1175'/>
+    <fieldValue name='RW2Trans' value='0 0.015 0'/>
+    <fieldValue name='RW3Trans' value='0 0.03 0'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='RSW1' name='RobotSupportWheel'>
+    <fieldValue name='RSWTrans' value='0.1 -0.025 0'/>
+    </ProtoInstance>
+    <ProtoInstance DEF='RSW2' name='RobotSupportWheel'>
+    <fieldValue name='RSWTrans' value='-0.1 -0.025 0'/>
+    </ProtoInstance>
+    <Transform DEF='bottom_part'  translation='0 -0.02 0'>
+      <Shape>
+        <Appearance>
+          <Material diffuseColor='0.4 0.4 1'>
+          </Material>
+        </Appearance>
+        <Extrusion spine='0 0 0 0 0.01 0' crossSection='0.0445 0.1222 0.065 0.1126 0.0836 0.0996 0.0996 0.0836 0.1126 0.065 0.1222 0.0445 0.128 0.0226 0.13 0 0.128 -0.0226 0.1222 -0.0445 0.1126 -0.065 0.0996 -0.0836 0.0836 -0.0996 0.065 -0.1126 0.0445 -0.1222 0.045 -0.1 -0.045 -0.1 -0.0445 -0.1222 -0.065 -0.1126 -0.0836 -0.0996 -0.0996 -0.0836 -0.1126 -0.065 -0.1222 -0.0445 -0.128 -0.0226 -0.13 0 -0.128 0.0226 -0.1222 0.0445 -0.1126 0.065 -0.0996 0.0836 -0.0836 0.0996 -0.065 0.1126 -0.0445 0.1222 -0.045 0.1 0.045 0.1 0.0445 0.1222' creaseAngle='0.5'>
+        </Extrusion>
+      </Shape>
+    </Transform>
+  </Transform>
+</Transform>
+<Script DEF='ChangeColor'  directOutput='false' mustEvaluate='false'>
+<field name='LS1' type='SFNode' accessType='initializeOnly'>
+
+  <Color USE='LS1C' >
+  </Color></field>
+<field name='LS2' type='SFNode' accessType='initializeOnly'>
+
+  <Color USE='LS2C' >
+  </Color></field>
+<field name='S1in' type='SFBool' accessType='inputOnly'/>
+<field name='S2in' type='SFBool' accessType='inputOnly'/>
+<![CDATA[javascript:
+        function S1in(value) {
+          if (value==1) {
+            LS1.color = new MFColor(new SFColor(1, 0, 0),new SFColor(1, 0, 0));
+          } else {
+            LS1.color = new MFColor(new SFColor(0, 1, 0),new SFColor(0, 1, 0));
+          }
+        }
+        function S2in(value) {
+          if (value==1) {
+            LS2.color = new MFColor(new SFColor(1, 0, 0),new SFColor(1, 0, 0));
+          } else {
+            LS2.color = new MFColor(new SFColor(0, 1, 0),new SFColor(0, 1, 0));
+          }
+        }
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]>
+</Script>
+<Group DEF='Route' >
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.128 0 0.75'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.2367 0 0.90623'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.402 0 1.11'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.553 0 1.3649'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.6253 0 1.6435'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.5696 0 1.8904'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.374 0 2.0403'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.0981 0 2.0774'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.8071 0 2.0218'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.5484 0 1.9154'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.3462 0 1.8155'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.1953 0 1.7735'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.065 0 1.7833'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.9329 0 1.8167'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.7919 0 1.8411'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.6509 0 1.8244'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.5298 0 1.7492'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.4348 0 1.6406'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.3554 0 1.5292'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.268 0 1.4374'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.1392 0 1.3754'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.94078 0 1.3323'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.69075 0 1.2684'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.43125 0 1.1528'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.21349 0 0.97569'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.091176 0 0.75'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.10022 0 0.51'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.21452 0 0.29157'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.38931 0 0.11228'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.58069 0 -0.030273'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.75145 0 -0.15712'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='0.8849 0 -0.29714'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.0061 0 -0.45141'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.1423 0 -0.60158'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.3089 0 -0.71871'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.507 0 -0.76727'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.7194 0 -0.72118'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='1.9148 0 -0.60441'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.0761 0 -0.45951'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.2062 0 -0.33106'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.328 0 -0.25953'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.4765 0 -0.26257'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.6654 0 -0.29845'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='2.8821 0 -0.31632'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.0934 0 -0.27677'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.2493 0 -0.15767'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.3035 0 0.033416'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.2695 0 0.24736'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.1915 0 0.44409'/>
+</ProtoInstance>
+<ProtoInstance name='Spot'>
+<fieldValue name='myTranslation' value='3.1247 0 0.60792'/>
+</ProtoInstance>
+</Group>
+</Scene>
+</X3D>

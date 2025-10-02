@@ -1,0 +1,27 @@
+{
+ "version":3,
+ "baseUrl":"support/slwebview_files",
+ "homeHid":1,
+ "sections":[
+  {
+   "hid":1,
+   "sid":"rpi_camera_feed",
+   "name":"rpi_camera_feed",
+   "fullname":"rpi_camera_feed",
+   "label":"rpi_camera_feed",
+   "parent":0,
+   "descendantIDs":[
+   ],
+   "descendantsURL":"support/slwebview_files/rpi_camera_feed_diagrams_1.json",
+   "sysViewURL":"support/slwebview_files/rpi_camera_feed_p.json"
+  }
+ ],
+ "optViews":[
+ ],
+ "display":{
+  "informer":false,
+  "notes":false
+ },
+ "iconsUrl":"support/slwebview_files/icon.css",
+ "lod":true
+}

@@ -7,5 +7,6 @@ path follower.
 
 ## Interactive Simulink Views
 
-[Open the GitHub Pages site →](https://sjohnson.github.io/simulink_rpi_robot_projects/)
+[Open the GitHub Pages site →](https://StuartGJohnson.github.io/simulink_rpi_robot_projects/)
+
 

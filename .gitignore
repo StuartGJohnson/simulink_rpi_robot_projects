@@ -5,4 +5,5 @@ codegen/
 *.mex*
 *.asv
 *.autosave
+*.elf
 

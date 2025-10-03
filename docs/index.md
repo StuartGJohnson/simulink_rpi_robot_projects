@@ -16,7 +16,7 @@ below.
   - NOT sensor fusion. A model to generate synthetic IMU data and collect it as a precursor to IMU sensor fusion.
   - [Open](./sensor_fusion/webview.html)
 - sensor_fusion_1
-  - Not sensor fusion A model to collect IMU data on the raspberry pi robot.
+  - Not sensor fusion. A model to collect IMU data on the raspberry pi robot.
   - [Open](./sensor_fusion_1/webview.html)
 - sensor_fusion_2
   - Actual IMU gyro + mag sensor fusion for heading.
